@@ -1,0 +1,565 @@
+/* Fond de base sur le body */
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* Dégradé en diagonale -45deg */
+    background: linear-gradient(
+        -45deg, 
+        #000002 0%, 
+        #000000 25%, 
+        #020622 50%, 
+        #000000 75%, 
+        #000000 100%
+    );
+    background-size: 200% 200%;
+    
+    /* L'animation tourne par défaut */
+    animation: vagueDiagonale 10s linear infinite;
+}
+
+/* Pause l'animation dès que le body a la classe .bg-fixed */
+body.bg-fixed {
+    animation-play-state: paused;
+}
+
+@keyframes vagueDiagonale {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 200%;
+    }
+}
+/* Désactive l'animation et remet le fond à sa position de départ (0% 0%) */
+body.bg-fixed {
+    animation: none !important;
+    background-position: 0% 0% !important;
+    transition: background-position 0.5s ease;
+    background: linear-gradient(-45deg,  
+        #000002 0%, 
+        #000000 25%, 
+        #020622 50%, 
+        #000000 75%, 
+        #000000 100%);
+}
+
+/* defilement fluide  */
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top: 70px;
+}
+/* nave navigation */
+.nav-link-custom{
+    padding-bottom: 5px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    
+}
+.text-jaune{
+    color: #ffee00;
+}
+.btn-warning{
+    background-color: #e5ff00;
+}
+.btn-warning:hover{
+    background-color: #e5ff00;
+}
+.nav-link-custom:hover,.nav-link-custom.active{
+    color: #eeff00;
+    padding: 0 5px;
+}
+.glow-logo {
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+}
+
+/* card service */
+/* Style moderne des cartes de service */
+
+.service-card {
+    position: relative;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Bordure animée infinie (gradient tournant) */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent 0deg,
+        transparent 120deg,
+        #ffee00 180deg,
+        #d0ff00 240deg,
+        transparent 360deg
+    );
+    animation: bordureInfinie 4s linear infinite;
+    z-index: -2;
+}
+
+/* Fond interne pour ne laisser apparaître que la bordure */
+.service-card::after {
+    content: '';
+    position: absolute;
+    inset: 2px; /* Épaisseur de la bordure lumineuse */
+    background: rgba(10, 15, 28, 0.95);
+    border-radius: 18px;
+    z-index: -1;
+}
+
+/* Animation de rotation continue de la bordure */
+@keyframes bordureInfinie {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* service */
+.container-service{
+    margin-top: -150px;
+    padding:0 100px 0 100px;
+}
+.container-apropos{
+    margin-top: -50px;
+    margin-left: 15%;
+}
+/* Survol de la carte */
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(255, 238, 0, 0.25);
+}
+
+/* Recadrage propre des icônes */
+.service-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+/* Style des flèches de navigation latérales */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffee00;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #d0ff00e1;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.nav-arrow-left {
+    left: 20px;
+}
+
+.nav-arrow-right {
+    right: 20px;
+}
+
+.nav-arrow:hover {
+    color: #000000;
+    background-color: #ffee00;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* animation entrer  */
+section{
+    animation:apparitiondouce 0.5s ease-out ;
+}
+
+@keyframes apparitiondouce {
+    from {
+        opacity: 0;
+         transform: translateY(20px); /*arrive vers le bas */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /*se fiche à sa position normale*/
+    }
+}
+
+/* Accueil */
+#accueil{
+    padding:10% 0 12% 0;
+}
+/* apropos */
+/* Animation Carte Histoire (Entrée de Gauche) */
+.anim-histoire {
+    opacity: 0;
+    transform: translateX(-80px);
+    animation: glisserGauche 0.9s cubic-bezier(0.3, 1, 0.5, 1) forwards;
+}
+
+/* Animation Cartes Valeurs (Entrée de Droite) */
+.anim-valeur {
+    opacity: 0;
+    transform: translateX(80px);
+    animation: glisserDroite 0.9s cubic-bezier(0.3, 1, 0.5, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+/* Keyframes */
+@keyframes glisserGauche {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glisserDroite {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* Cadre en verre transparent (Glassmorphism) */
+.glass-box {
+    max-width: 900px;
+    background: rgba(15, 23, 42, 0.7); 
+    backdrop-filter: blur(16px); /* Effet de flou de l'arrière-plan */
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(15, 23, 42, 0.7);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                radial-gradient(circle at top left, rgba(255, 238, 0, 0.15), transparent 50%),
+                radial-gradient(circle at bottom right, rgba(255, 238, 0, 0.15), transparent 50%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-box:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 238, 0, 0.3);
+    /* box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) */
+}
+/* Animation machine à écrire */
+.typing-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #e6ff07;
+    animation: 
+        ecriture 6s steps(30, end) infinite,
+        clignotement 0.75s step-end infinite;
+}
+
+/* Révèle le texte de gauche à droite */
+@keyframes ecriture {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100%; 
+    }
+    100% {
+        width: 100%; 
+    }
+}
+
+/* Fait clignoter le curseur */
+@keyframes clignotement {
+    from, to { border-color: transparent; }
+    50% { border-color: #eeff07; }
+}
+
+/* Section procedure */
+/* Cartes Élégantes Glassmorphism */
+.procedure-card {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(239, 243, 8, 0.63);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+                inset 0 0 15px rgba(255, 238, 0, 0.05);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.procedure-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffee00;
+    box-shadow: 0 15px 35px rgba(255, 238, 0, 0.2),
+                0 0 15px rgba(255, 238, 0, 0.3);
+}
+
+/* Badge Numéroté */
+.step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #ffee00, #b3b300);
+    color: #000000;
+    font-weight: 800;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+/* Animation d'entrée depuis le bas pour les étapes de Procédure  */
+.procedure-step {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: apparitiondouce 0.8s ease-out forwards;
+}
+
+/* Décalage temporel progressif pour les 7 étapes */
+.step-1 { animation-delay: 0.1s; }
+.step-2 { animation-delay: 0.25s; }
+.step-3 { animation-delay: 0.4s; }
+.step-4 { animation-delay: 0.55s; }
+.step-5 { animation-delay: 0.7s; }
+.step-6 { animation-delay: 0.85s; }
+.step-7 { animation-delay: 1s; }
+
+/* Zone du logo */
+.tech-logo-box {
+    min-width: 65px;
+    height: 65px;
+    /* background: rgba(0, 0, 0, 0.2); */
+}
+
+/* Limite la largeur max sur grand écran pour un rendu élégant */
+.max-w-750 {
+    max-width: 750px;
+}
+
+/* section tarif */
+/* Optionnel : si le bouton change de fond au survol pour rester joli */
+#tarif .btn:hover {
+  color: #000000 !important;
+}
+/* Animation d'entrée en cascade pour les cartes de tarifs */
+.tarif-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: apparitiondouce 0.8s ease-out forwards;
+}
+
+/* Décalage temporel pour chaque carte */
+.tarif-delay-1 { animation-delay: 0.1s; }
+.tarif-delay-2 { animation-delay: 0.3s; }
+.tarif-delay-3 { animation-delay: 0.5s; }
+.tarif-delay-4 { animation-delay: 0.7s; }
+
+/* section technologie */
+/* Animation des technologies (Alternance Gauche / Droite) */
+.tech-card-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    animation: glisserGauche 0.8s cubic-bezier(0.3, 1, 0.5, 1) forwards;
+}
+
+.tech-card-right {
+    opacity: 0;
+    transform: translateX(80px);
+    animation: glisserDroite 0.8s cubic-bezier(0.3, 1, 0.5, 1) forwards;
+}
+
+/* Décalages par ligne pour un effet fluide */
+.tech-delay-1 { animation-delay: 0.1s; }
+.tech-delay-2 { animation-delay: 0.2s; }
+.tech-delay-3 { animation-delay: 0.3s; }
+.tech-delay-4 { animation-delay: 0.4s; }
+.tech-delay-5 { animation-delay: 0.5s; }
+.tech-delay-6 { animation-delay: 0.6s; }
+
+/* Copyright fixe en bas à droite */
+.copyright-fixed {
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: auto;  /* Pousse le bloc complètement à droite */
+    margin-right: 20px; /* Conserve une petite marge par rapport au bord droit */
+    width: fit-content;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 238, 0, 0.3);
+    border-radius: 12px;
+    padding: 8px 16px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.copyright-fixed strong {
+    color: #ffee00; 
+}
+
+/* Style personnalisé pour les inputs de la section Contact */
+.custom-input {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 238, 0, 0.3) !important;
+  color: #ffffff !important;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+/* Style des placeholders (texte indicatif) */
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Style lors du clic/focus sur un champ */
+.custom-input:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffee00 !important;
+  box-shadow: 0 0 10px rgba(255, 238, 0, 0.582) !important;
+  outline: none;
+}
+
+/* Style des options du menu déroulant (Select) */
+.custom-input option {
+  background-color: #020622;
+  color: #ffffff;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+    div[style*="display: flex"][style*="gap: 25px"] {
+        padding: 15px !important;
+        gap: 15px !important;
+    }
+    
+    div[style*="flex: 1"], 
+    div[style*="flex: 1.5"] {
+        min-width: 100% !important;
+    }
+}
+
+/* Adaptation Ordinateurs Portables / Tablettes (< 992px) */
+@media (max-width: 991.98px) {
+    .container-service {
+        margin-top: 0 !important;
+        padding: 0 15px !important;
+    }
+
+    .container-apropos {
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.8rem;
+    }
+    
+    .nav-arrow-left { left: 5px; }
+    .nav-arrow-right { right: 5px; }
+}
+
+/* Adaptation Mobiles / Smartphones (< 576px) */
+@media (max-width: 575.98px) {
+    .nav-arrow {
+        display: none !important;
+    }
+
+    h2.display-5 {
+        font-size: 1.8rem !important;
+    }
+
+    div[style*="display: flex"][style*="gap: 15px"] {
+        justify-content: center;
+    }
+
+    .glass-box {
+        padding: 1.25rem !important;
+        border-radius: 16px !important;
+    }
+
+    .w-md-auto {
+        width: 100% !important;
+    }
+
+    /* Le copyright conserve sa position à droite sur mobile sans dépasser */
+    .copyright-fixed {
+        margin-top: 25px !important;
+        margin-bottom: 15px !important;
+        margin-right: 15px !important;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+    /* Masquage ou réduction des flèches latérales pour éviter le chevauchement sur mobile */
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.8rem;
+    }
+    
+    .nav-arrow-left {
+        left: 5px;
+    }
+
+    .nav-arrow-right {
+        right: 5px;
+    }
+
+
+/* --- Adaptations spécifiques pour Smartphones (< 576px) --- */
+@media (max-width: 575.98px) {
+    /* Ajustement des flèches de navigation pour ne pas gêner la lecture */
+    .nav-arrow {
+        display: none !important; /* Masquées sur très petits écrans pour privilégier l'espace de lecture */
+    }
+
+    /* Réduction de la taille des titres principaux */
+    h2.display-5 {
+        font-size: 1.8rem !important;
+    }
+
+    /* Alignement des icônes de technologies dans la modale/détails */
+    div[style*="display: flex"][style*="gap: 15px"] {
+        justify-content: center;
+    }
+
+    /* Ajustement des boîtes glassmorphism */
+    .glass-box {
+        padding: 1.25rem !important;
+        border-radius: 16px !important;
+    }
+
+    /* Boutons de formulaire plein écran sur mobile */
+    .w-md-auto {
+        width: 100% !important;
+    }
+}
