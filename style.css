@@ -400,13 +400,12 @@ section{
 .tech-delay-6 { animation-delay: 0.6s; }
 
 /* Copyright fixe en bas à droite */
+/* Copyright fixe sur PC */
 .copyright-fixed {
-    position: relative;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    margin-left: auto;  /* Pousse le bloc complètement à droite */
-    margin-right: 20px; /* Conserve une petite marge par rapport au bord droit */
-    width: fit-content;
+    position: absolute !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    margin: 0 !important;
     background: rgba(15, 23, 42, 0.75);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -420,9 +419,8 @@ section{
 }
 
 .copyright-fixed strong {
-    color: #ffee00; 
+    color: #ffee00;
 }
-
 /* Style personnalisé pour les inputs de la section Contact */
 .custom-input {
   background-color: rgba(255, 255, 255, 0.05) !important;
@@ -451,115 +449,879 @@ section{
   color: #ffffff;
 }
 
-/* responsive */
-@media (max-width: 768px) {
-    div[style*="display: flex"][style*="gap: 25px"] {
-        padding: 15px !important;
-        gap: 15px !important;
+/* ==========================================
+   HEADER : RENDU ORDINATEUR (PAR DÉFAUT)
+   ========================================== */
+.header-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+}
+
+.brand-logo {
+    flex-shrink: 0;
+}
+
+.main-nav {
+    font-size: small;
+}
+
+/* ==========================================
+   HEADER : RENDU MOBILE UNIQUMENT (< 768px)
+   ========================================== */
+@media (max-width: 767.98px) {
+    .header-container {
+        padding-left: 8px;
+        padding-right: 8px;
+        gap: 10px;
     }
-    
-    div[style*="flex: 1"], 
-    div[style*="flex: 1.5"] {
-        min-width: 100% !important;
+
+    .brand-logo img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .brand-logo span {
+        font-size: 0.7rem !important;
+    }
+
+    /* Rend le menu scrollable uniquement sur mobile */
+    .main-nav {
+        display: flex !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        gap: 6px !important;
+        font-size: 0.72rem !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Masque scrollbar Firefox */
+    }
+
+    .main-nav::-webkit-scrollbar {
+        display: none; /* Masque scrollbar Chrome/Safari */
+    }
+
+    .main-nav a {
+        white-space: nowrap !important;
     }
 }
 
-/* Adaptation Ordinateurs Portables / Tablettes (< 992px) */
-@media (max-width: 991.98px) {
-    .container-service {
-        margin-top: 0 !important;
-        padding: 0 15px !important;
+/* S'applique UNIQUEMENT sur mobile (< 768px) */
+@media (max-width: 767.98px) {
+
+    /* Force la section d'accueil à occuper toute la hauteur de l'écran du téléphone */
+    #accueil {
+        position: relative !important;
+        min-height: calc(100vh - 60px) !important; /* Prend toute la hauteur disponible */
+        padding-bottom: 60px !important;            /* Laisse de la place en bas pour le badge */
     }
 
-    .container-apropos {
-        margin-top: 0 !important;
+    /* Calé exactement en bas à droite sur téléphone */
+    .copyright-fixed {
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        margin: 0 !important;
+        font-size: 0.7rem !important;
+    }
+
+}
+
+@media (max-width: 767.98px) {
+
+    #apropos {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 30px !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* 1. La carte prend une largeur fixe centrée (80% de l'écran) */
+    #apropos .glass-box,
+    #apropos .anim-histoire,
+    #apropos .anim-valeur,
+    #apropos .card {
+        width: 82% !important;
+        max-width: 82% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* 2. Le bloc "Notre Histoire" devient le repère direct pour les flèches */
+    #apropos .anim-histoire {
+        position: relative !important;
+    }
+
+    /* 3. Style unique des flèches */
+    #apropos .nav-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 1rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* 4. Flèche gauche collée sur le bord gauche de la carte */
+    #apropos .nav-arrow-left {
+        left: 5px !important;
+        right: auto !important;
+    }
+
+    /* 5. Flèche droite collée sur le bord droit de la carte */
+    #apropos .nav-arrow-right {
+        right: 5px !important;
+        left: auto !important;
+    }
+
+    /* 6. Copyright en bas à droite */
+    #apropos .copyright-fixed {
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        left: auto !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* ==========================================
+   SERVICES MOBILE : 2 COLONNES (2x2)
+   ========================================== */
+@media (max-width: 767.98px) {
+
+    #services {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 150px !important;
+        padding-bottom: 70px !important;
+    }
+
+    /* Conteneur principal avec espace élargi pour libérer les flèches */
+    #services .container-service {
+        position: relative !important;
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+
+    /* Force l'affichage en 2 COLONNES (2 cartes par ligne) */
+    #services .row > div {
+        width: 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    /* Ajustement du design des cartes pour tenir à 2 par ligne */
+    #services .service-card  {
+        padding: 15px 4px ;
+        min-height: 100% !important;
+        text-align: center !important;
+    }
+
+    #services .service-card h3 {
+        font-size: 0.85rem !important;
+    }
+
+    #services .service-card p {
+        font-size: 0.7rem !important;
+        line-height: 1.2 !important;
+    }
+
+    #services .service-icon {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    /* Positionnement des flèches au milieu de la hauteur totale */
+    #services .nav-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.9rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Flèches décalées pour ne plus toucher les cartes */
+    #services .nav-arrow-left {
+        left: 4px !important;
+    }
+
+    #services .nav-arrow-right {
+        right: 4px !important;
+    }
+
+    #services .copyright-fixed {
+        position: absolute !important;
+        bottom: px !important;
+        right: 15px !important;
+        left: auto !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* ==========================================
+   ADAPTATION MOBILE : SECTION PROCÉDURE
+   ========================================== */
+@media (max-width: 767.98px) {
+
+    #procedure {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 30px !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* 1. Ajustement du titre */
+    #procedure h2 {
+        font-size: 1.6rem !important;
+    }
+
+    #procedure h2 img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    /* 2. Conteneur réduit pour laisser l'espace latéral aux flèches */
+    #procedure .container {
+        position: relative !important;
+        padding-left: 45px !important; /* Marge pour la flèche gauche */
+        padding-right: 45px !important; /* Marge pour la flèche droite */
+    }
+
+    /* 3. Ajustement des cartes de procédure sur une seule colonne */
+    #procedure .procedure-card {
+        padding: 15px !important;
+        width: 100% !important;
+    }
+
+    #procedure .procedure-card h3 {
+        font-size: 0.95rem !important;
+    }
+
+    #procedure .procedure-card p {
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    #procedure .step-badge {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 4. Ancrage des flèches au niveau de la première étape (Étape 01) */
+    #procedure .procedure-container > div:first-child {
+        position: relative !important;
+    }
+
+    #procedure .nav-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 1rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Placement exact dans les espaces dégagés */
+    #procedure .nav-arrow-left {
+        left: 4px !important;
+        right: auto !important;
+    }
+
+    #procedure .nav-arrow-right {
+        right: 4px !important;
+        left: auto !important;
+    }
+
+    /* 5. Copyright en bas */
+    #procedure .copyright-fixed {
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        left: auto !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* ==========================================
+   ADAPTATION MOBILE : SECTION TARIFS
+   ========================================== */
+@media (max-width: 767.98px) {
+
+    #tarif {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 30px !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* 1. Ajustement du titre */
+    #tarif h2 {
+        font-size: 1.6rem !important;
+    }
+
+    #tarif h2 img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    /* 2. Marge interne pour libérer l'espace des flèches */
+    #tarif .container {
+        position: relative !important;
+        padding-left: 45px !important;
+        padding-right: 45px !important;
+    }
+
+    /* 3. Grille 2 colonnes (2 cartes par ligne) */
+    #tarif .row > div {
+        width: 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+
+    /* 4. Ajustement du contenu des cartes */
+    #tarif .glass-box {
+        padding: 10px 8px !important;
+        text-align: center !important;
+    }
+
+    #tarif .glass-box h3 {
+        font-size: 0.85rem !important;
+        min-height: 2.2em; /* Aligne la hauteur des titres */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #tarif .glass-box .text-jaune {
+        font-size: 0.95rem !important;
+    }
+
+    #tarif .glass-box ul {
+        font-size: 0.65rem !important;
+        padding-left: 0 !important;
+        margin-bottom: 10px !important;
+    }
+
+    #tarif .glass-box ul li {
+        margin-bottom: 3px !important;
+        text-align: left !important;
+    }
+
+    #tarif .glass-box .btn {
+        font-size: 0.65rem !important;
+        padding: 6px 2px !important;
+    }
+
+    /* 5. Configuration et positionnement des flèches */
+    #tarif .nav-arrow {
+        position: absolute !important;
+        top: 52% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 1rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #tarif .nav-arrow-left {
+        left: 4px !important;
+    }
+
+    #tarif .nav-arrow-right {
+        right: 4px !important;
+    }
+
+    /* 6. Copyright en bas */
+    #tarif .copyright-fixed {
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        left: auto !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* ==========================================
+   ADAPTATION MOBILE : SECTION RÉALISATIONS
+   ========================================== */
+@media (max-width: 767.98px) {
+
+    #realisation {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 30px !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* 1. Ajustement du titre */
+    #realisation h2 {
+        font-size: 1.6rem !important;
+    }
+
+    #realisation h2 img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    /* 2. Marge interne pour libérer l'espace des flèches */
+    #realisation .container {
+        position: relative !important;
+        padding-left: 45px !important;
+        padding-right: 45px !important;
+    }
+
+    /* 3. Une seule colonne pour une meilleure visibilité des projets */
+    #realisation .row > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* 4. Ajustement de la carte et des images */
+    #realisation .glass-box {
+        padding: 12px !important;
+    }
+
+    #realisation .glass-box img {
+        height: 130px !important; /* Hauteur d'image ajustée pour mobile */
+        margin-bottom: 10px !important;
+    }
+
+    #realisation .glass-box h3 {
+        font-size: 0.95rem !important;
+        text-align: center !important;
+    }
+
+    #realisation .glass-box p {
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+        text-align: center !important;
+    }
+
+    #realisation .glass-box .btn {
+        font-size: 0.75rem !important;
+        padding: 6px 10px !important;
+    }
+
+    /* 5. Configuration et positionnement des flèches */
+    #realisation .nav-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 1rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #realisation .nav-arrow-left {
+        left: 4px !important;
+    }
+
+    #realisation .nav-arrow-right {
+        right: 4px !important;
+    }
+
+    /* 6. Copyright en bas */
+    #realisation .copyright-fixed {
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        left: auto !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* ==========================================
+   ADAPTATION MOBILE : SECTION ÉQUIPE
+   ========================================== */
+@media (max-width: 767.98px) {
+
+    #equipe {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 30px !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* 1. Titre de section */
+    #equipe h2 {
+        font-size: 1.6rem !important;
+    }
+
+    #equipe h2 img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    /* 2. Marge interne pour dégager les flèches */
+    #equipe .container {
+        position: relative !important;
+        padding-left: 38px !important;
+        padding-right: 38px !important;
+    }
+
+    /* 3. Carte du Leader (Dirigeant) */
+    #equipe .row:first-of-type .col-lg-10 {
+        padding: 0 !important;
+    }
+
+    #equipe .row:first-of-type .glass-box {
+        padding: 12px !important;
+    }
+
+    #equipe .row:first-of-type .row {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    #equipe .row:first-of-type .col-md-7 {
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+
+    #equipe .row:first-of-type .col-md-7 img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    #equipe .row:first-of-type h3 {
+        font-size: 1rem !important;
+    }
+
+    #equipe .row:first-of-type .col-md-5 {
+        justify-content: center !important;
+        margin-top: 8px !important;
+    }
+
+    #equipe .row:first-of-type .btn {
+        font-size: 0.65rem !important;
+        padding: 3px 8px !important;
+    }
+
+    /* 4. Cartes des Membres */
+    #equipe .row.g-3 > div {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #equipe .row.g-3 .glass-box {
+        padding: 10px !important;
+    }
+
+    #equipe .row.g-3 img {
+        width: 48px !important;
+        height: 48px !important;
+    }
+
+    #equipe .row.g-3 h4 {
+        font-size: 0.8rem !important;
+    }
+
+    #equipe .row.g-3 span {
+        font-size: 0.65rem !important;
+    }
+
+    #equipe .row.g-3 .text-end {
+        font-size: 0.65rem !important;
+    }
+
+    /* 5. Configuration et placement des flèches */
+    #equipe .nav-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 1rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #equipe .nav-arrow-left {
+        left: 4px !important;
+    }
+
+    #equipe .nav-arrow-right {
+        right: 4px !important;
+    }
+
+    /* 6. Copyright */
+    #equipe .copyright-fixed {
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        left: auto !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* ==========================================
+   MOBILE ADAPTATIOUN: SECTION TECHNOLOGIES
+   ========================================== */
+@media (max-width: 767.98px) {
+
+    #technologie {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 30px !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* 1. Section Title */
+    #technologie h2 {
+        font-size: 1.6rem !important;
+    }
+
+    #technologie h2 img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    /* 2. Container Padding fir d'Pfeiler */
+    #technologie .container {
+        position: relative !important;
+        padding-left: 45px !important;
+        padding-right: 45px !important;
+    }
+
+    /* 3. Cards & Glass-box Layout */
+    #technologie .glass-box {
+        padding: 10px !important;
+        gap: 10px !important;
+    }
+
+    /* 4. Logo Box an Technologielogoen */
+    #technologie .tech-logo-box {
+        width: 45px !important;
+        height: 45px !important;
+        min-width: 45px !important;
+        padding: 4px !important;
+    }
+
+    #technologie .tech-logo-box img {
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    /* 5. Typographie a Marge-Upassung */
+    #technologie .tech-text-box h5 {
+        font-size: 0.85rem !important;
+        margin-bottom: 2px !important;
+    }
+
+    #technologie .tech-text-box p {
+        font-size: 0.65rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* 6. Navigatiounspfeiler */
+    #technologie .nav-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 1rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #technologie .nav-arrow-left {
+        left: 4px !important;
+    }
+
+    #technologie .nav-arrow-right {
+        right: 4px !important;
+    }
+}
+/* ==========================================
+   ADAPTATION MOBILE : SECTION CONTACT
+   ========================================== */
+@media (max-width: 767.98px) {
+
+    #contact {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 30px !important;
+        padding-bottom: 80px !important;
+    }
+
+    /* 1. Titre de section */
+    #contact h2 {
+        font-size: 1.6rem !important;
+    }
+
+    #contact h2 img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    /* 2. Dégagement pour les flèches latérales */
+    #contact .container {
+        position: relative !important;
+        padding-left: 45px !important;
+        padding-right: 45px !important;
+    }
+
+    /* 3. Boîte de formulaire (Glass Box) */
+    #contact .glass-box {
+        padding: 18px 15px !important;
+        border-radius: 16px !important;
+    }
+
+    /* 4. Labels et Champs de saisie */
+    #contact .form-label {
+        font-size: 0.8rem !important;
+        margin-bottom: 4px !important;
+    }
+
+    #contact .custom-input {
+        font-size: 0.85rem !important;
+        padding: 8px 12px !important;
+        border-radius: 8px !important;
+    }
+
+    #contact textarea.custom-input {
+        rows: 3 !important;
+        height: 100px !important;
+    }
+
+    /* 5. Bouton d'envoi */
+    #contact button[type="submit"] {
+        font-size: 0.9rem !important;
+        padding: 10px 16px !important;
+        margin-top: 5px !important;
+    }
+
+    /* 6. Flèche de navigation */
+    #contact .nav-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 1rem !important;
+        z-index: 99 !important;
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid #ffee00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #contact .nav-arrow-left {
+        left: 4px !important;
+    }
+}
+
+/* Adaptation Mobile uniquement */
+@media (max-width: 767.98px) {
+    .brand-logo img {
         margin-left: 0 !important;
     }
+}   
 
-    .nav-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.8rem;
-    }
-    
-    .nav-arrow-left { left: 5px; }
-    .nav-arrow-right { right: 5px; }
-}
-
-/* Adaptation Mobiles / Smartphones (< 576px) */
-@media (max-width: 575.98px) {
-    .nav-arrow {
-        display: none !important;
-    }
-
-    h2.display-5 {
-        font-size: 1.8rem !important;
-    }
-
-    div[style*="display: flex"][style*="gap: 15px"] {
-        justify-content: center;
-    }
-
-    .glass-box {
-        padding: 1.25rem !important;
-        border-radius: 16px !important;
+/* ==========================================
+   MENU DRAWER / OFF-CANVAS MOBILE (< 768px)
+   ========================================== */
+@media (max-width: 767.98px) {
+    #main-nav {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 250px !important;
+        height: 100vh !important;
+        background-color: rgba(15, 23, 42, 0.98) !important;
+        backdrop-filter: blur(10px) !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 60px 20px 20px 20px !important;
+        gap: 20px !important;
+        z-index: 1050 !important;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out !important;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5) !important;
     }
 
-    .w-md-auto {
-        width: 100% !important;
+    #main-nav.show-nav {
+        transform: translateX(0) !important;
     }
 
-    /* Le copyright conserve sa position à droite sur mobile sans dépasser */
-    .copyright-fixed {
-        margin-top: 25px !important;
-        margin-bottom: 15px !important;
-        margin-right: 15px !important;
-        font-size: 0.8rem;
-        padding: 6px 12px;
-    }
-}
-
-    /* Masquage ou réduction des flèches latérales pour éviter le chevauchement sur mobile */
-    .nav-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.8rem;
-    }
-    
-    .nav-arrow-left {
-        left: 5px;
-    }
-
-    .nav-arrow-right {
-        right: 5px;
-    }
-
-
-/* --- Adaptations spécifiques pour Smartphones (< 576px) --- */
-@media (max-width: 575.98px) {
-    /* Ajustement des flèches de navigation pour ne pas gêner la lecture */
-    .nav-arrow {
-        display: none !important; /* Masquées sur très petits écrans pour privilégier l'espace de lecture */
-    }
-
-    /* Réduction de la taille des titres principaux */
-    h2.display-5 {
-        font-size: 1.8rem !important;
-    }
-
-    /* Alignement des icônes de technologies dans la modale/détails */
-    div[style*="display: flex"][style*="gap: 15px"] {
-        justify-content: center;
-    }
-
-    /* Ajustement des boîtes glassmorphism */
-    .glass-box {
-        padding: 1.25rem !important;
-        border-radius: 16px !important;
-    }
-
-    /* Boutons de formulaire plein écran sur mobile */
-    .w-md-auto {
-        width: 100% !important;
+    #main-nav .nav-link-custom {
+        font-size: 1.1rem !important;
+        width: 100%;
+        display: block;
     }
 }

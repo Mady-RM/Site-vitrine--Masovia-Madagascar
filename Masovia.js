@@ -3,6 +3,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const allClickableLinks = document.querySelectorAll("a[href^='#']");
     const sections = document.querySelectorAll("section");
 
+    // Elements du menu burger
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuClose = document.getElementById("menu-close");
+    const mainNav = document.getElementById("main-nav");
+
+    // Ouverture du menu
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+            mainNav.classList.add("show-nav");
+        });
+    }
+
+    // Fermeture du menu via le bouton X
+    if (menuClose && mainNav) {
+        menuClose.addEventListener("click", () => {
+            mainNav.classList.remove("show-nav");
+        });
+    }
+
     // 1. Initialisation de Typed.js
     let typed;
     const typedElement = document.querySelector('#typed-text');
@@ -30,11 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!targetid) return;
 
         sections.forEach(section => {
-            // Comparaison insensible à la casse pour éviter les erreurs de frappe (ex: Contact vs contact)
             if (section.id.toLowerCase() === targetid.toLowerCase()) {
                 section.classList.remove("d-none");
 
-                // Relance animations À Propos
                 if (targetid.toLowerCase() === "apropos") {
                     const elementsAnim = section.querySelectorAll('.anim-histoire, .anim-valeur');
                     elementsAnim.forEach(el => {
@@ -44,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                 }
 
-                // Relance animations Procédure
                 if (targetid.toLowerCase() === "procedure") {
                     const steps = section.querySelectorAll('.procedure-step');
                     steps.forEach(step => {
@@ -58,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Mise à jour de la Navbar active
         navlinks.forEach(link => {
             const linkHref = link.getAttribute("href").replace("#", "").toLowerCase();
             if (linkHref === targetid.toLowerCase()) {
@@ -68,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Gestion du fond animé
         if (targetid.toLowerCase() === "accueil") {
             document.body.classList.remove("bg-fixed");
         } else {
@@ -76,13 +90,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 3. Gestion des clics sur les liens
+    // 3. Gestion des clics sur les liens & fermeture automatique du menu mobile
     allClickableLinks.forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
             const targetid = this.getAttribute("href").replace("#", "");
             if (targetid) {
                 ActiverSection(targetid);
+            }
+            
+            // Referme le menu mobile au clic sur un lien
+            if (mainNav && mainNav.classList.contains("show-nav")) {
+                mainNav.classList.remove("show-nav");
             }
         });
     });
@@ -91,39 +110,37 @@ document.addEventListener("DOMContentLoaded", () => {
     ActiverSection("accueil");
 });
 
-  // Met à jour l'année automatiquement
-  document.getElementById('year').textContent = new Date().getFullYear();
+// Met à jour l'année automatiquement sur toutes les sections
+document.querySelectorAll('.year').forEach(el => {
+    el.textContent = new Date().getFullYear();
+});
 
-  // Dictionnaire contenant les détails des offres
-  const offresDetails = {
+// Dictionnaire contenant les détails des offres
+const offresDetails = {
     'vitrine': {
-      nom: 'Site vitrine (300 Ar)',
-      details: "Bonjour,\nJe suis intéressé(e) par l'offre Site Vitrine (300 Ar) comprenant :\n- Design de Logo\n- Charte Graphique\n- Cartes de Visite\n- Kit Réseaux Sociaux"
+        nom: 'Site vitrine (600 000Ar)',
+        details: "Bonjour,\nJe suis intéressé(e) par l'offre Site Vitrine (600 000Ar) comprenant :\n- Design de Logo\n- Charte Graphique\n- Cartes de Visite\n- Kit Réseaux Sociaux"
     },
     'sur-mesure': {
-      nom: 'Développement sur mesure (250 Ar)',
-      details: "Bonjour,\nJe suis intéressé(e) par l'offre Développement sur mesure (250 Ar) comprenant :\n- 10 Templates Posts\n- 5 Templates Stories\n- Couvertures Highlights\n- Planning 1 Mois"
+        nom: 'Développement sur mesure (650 000Ar)',
+        details: "Bonjour,\nJe suis intéressé(e) par l'offre Développement sur mesure (650 000Ar) comprenant :\n- Design & logo\n- Cahier de charge\n- Charte graphique\n- Hébergement gratuit\n- Développement de A à Z\n- Maintenance gratuit 1 mois"
     },
     'ecommerce': {
-      nom: 'Ecommerce (600 Ar)',
-      details: "Bonjour,\nJe suis intéressé(e) par l'offre Ecommerce (600 AR) comprenant :\n- 5 Pages Sur-Mesure\n- Design Responsive\n- Référencement SEO\n- Révisions Offertes"
+        nom: 'Ecommerce (1 200 000Ar)',
+        details: "Bonjour,\nJe suis intéressé(e) par l'offre Ecommerce (1 200 000Ar) comprenant :\n- Design & logo\n- Charte graphique\n- Hébergements gratuit\n- Mode de payement\n- Maintenance gratuit 1 mois"
     },
     'mobile': {
-      nom: 'Développement mobile (1 000 Ar)',
-      details: "Bonjour,\nJe suis intéressé(e) par l'offre Développement mobile (1 000 Ar) comprenant :\n- Site Web + Hébergement\n- Branding & Logo inclus\n- Maintenance IT & Réseau\n- Support prioritaire 24/7"
+        nom: 'Développement mobile (3 000 000Ar)',
+        details: "Bonjour,\nJe suis intéressé(e) par l'offre Développement mobile (3 000 000Ar) comprenant :\n- Déploiement sur Apple store & play store\n- Logo design\n- Charte graphique\n- Cahier de charge\n- Développement de A à Z\n- Maintenance gratuit 1 mois"
     }
-  };
+};
 
-  // Fonction appelée lors du clic sur un bouton "Choisir cette offre"
-  function choisirOffre(typeOffre) {
+function choisirOffre(typeOffre) {
     const selectSujet = document.getElementById('subject');
     const textareaMessage = document.getElementById('message');
 
     if (offresDetails[typeOffre]) {
-      // 1. Sélectionne automatiquement la bonne option dans le menu déroulant
-      selectSujet.value = typeOffre;
-
-      // 2. Remplit automatiquement la zone de message avec les points inclus dans l'offre
-      textareaMessage.value = offresDetails[typeOffre].details;
+        selectSujet.value = typeOffre;
+        textareaMessage.value = offresDetails[typeOffre].details;
     }
-  }
+}
