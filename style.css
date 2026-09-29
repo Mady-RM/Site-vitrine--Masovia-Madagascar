@@ -552,34 +552,32 @@ section{
         position: relative !important;
     }
 
-    /* 3. Style unique des flèches */
-    #apropos .nav-arrow {
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        width: 34px !important;
-        height: 34px !important;
-        font-size: 1rem !important;
-        z-index: 99 !important;
-        background: rgba(15, 23, 42, 0.95) !important;
-        border: 1px solid #ffee00 !important;
-        border-radius: 50% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
+   /* 3. Style unique des flèches fixes lors du scroll */
+#apropos .nav-arrow {
+    position: fixed !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 1rem !important;
+    z-index: 9999 !important; 
+    background: rgba(15, 23, 42, 0.95) !important;
+    border: 1px solid #ffee00 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
 
-    /* 4. Flèche gauche collée sur le bord gauche de la carte */
-    #apropos .nav-arrow-left {
-        left: 5px !important;
-        right: auto !important;
-    }
+/* 4. Flèche gauche collée à gauche de l'écran */
+#apropos .nav-arrow-left {
+    left: 5px !important;
+}
 
-    /* 5. Flèche droite collée sur le bord droit de la carte */
-    #apropos .nav-arrow-right {
-        right: 5px !important;
-        left: auto !important;
-    }
+/* 5. Flèche droite collée à droite de l'écran */
+#apropos .nav-arrow-right {
+    right: 5px !important;
+}
 
     /* 6. Copyright en bas à droite */
     #apropos .copyright-fixed {
@@ -645,13 +643,13 @@ section{
 
     /* Positionnement des flèches au milieu de la hauteur totale */
     #services .nav-arrow {
-        position: absolute !important;
+        position: fixed !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 32px !important;
         height: 32px !important;
         font-size: 0.9rem !important;
-        z-index: 99 !important;
+        z-index: 999 !important;
         background: rgba(15, 23, 42, 0.95) !important;
         border: 1px solid #ffee00 !important;
         border-radius: 50% !important;
@@ -737,13 +735,13 @@ section{
     }
 
     #procedure .nav-arrow {
-        position: absolute !important;
+        position: fixed !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 34px !important;
         height: 34px !important;
         font-size: 1rem !important;
-        z-index: 99 !important;
+        z-index: 999 !important;
         background: rgba(15, 23, 42, 0.95) !important;
         border: 1px solid #ffee00 !important;
         border-radius: 50% !important;
@@ -850,13 +848,13 @@ section{
 
     /* 5. Configuration et positionnement des flèches */
     #tarif .nav-arrow {
-        position: absolute !important;
+        position: fixed !important;
         top: 52% !important;
         transform: translateY(-50%) !important;
         width: 34px !important;
         height: 34px !important;
         font-size: 1rem !important;
-        z-index: 99 !important;
+        z-index: 999 !important;
         background: rgba(15, 23, 42, 0.95) !important;
         border: 1px solid #ffee00 !important;
         border-radius: 50% !important;
@@ -866,11 +864,11 @@ section{
     }
 
     #tarif .nav-arrow-left {
-        left: 4px !important;
+        left: 1px !important;
     }
 
     #tarif .nav-arrow-right {
-        right: 4px !important;
+        right: 1px !important;
     }
 
     /* 6. Copyright en bas */
@@ -950,13 +948,13 @@ section{
 
     /* 5. Configuration et positionnement des flèches */
     #realisation .nav-arrow {
-        position: absolute !important;
+        position: fixed !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 34px !important;
         height: 34px !important;
         font-size: 1rem !important;
-        z-index: 99 !important;
+        z-index: 999 !important;
         background: rgba(15, 23, 42, 0.95) !important;
         border: 1px solid #ffee00 !important;
         border-radius: 50% !important;
@@ -1083,13 +1081,13 @@ section{
 
     /* 5. Configuration et placement des flèches */
     #equipe .nav-arrow {
-        position: absolute !important;
+        position: fixed !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 34px !important;
         height: 34px !important;
         font-size: 1rem !important;
-        z-index: 99 !important;
+        z-index: 999 !important;
         background: rgba(15, 23, 42, 0.95) !important;
         border: 1px solid #ffee00 !important;
         border-radius: 50% !important;
@@ -1099,11 +1097,11 @@ section{
     }
 
     #equipe .nav-arrow-left {
-        left: 4px !important;
+        left: 1px !important;
     }
 
     #equipe .nav-arrow-right {
-        right: 4px !important;
+        right: 1px !important;
     }
 
     /* 6. Copyright */
@@ -1181,13 +1179,13 @@ section{
 
     /* 6. Navigatiounspfeiler */
     #technologie .nav-arrow {
-        position: absolute !important;
+        position: fixed !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 34px !important;
         height: 34px !important;
         font-size: 1rem !important;
-        z-index: 99 !important;
+        z-index: 999 !important;
         background: rgba(15, 23, 42, 0.95) !important;
         border: 1px solid #ffee00 !important;
         border-radius: 50% !important;
@@ -1266,13 +1264,13 @@ section{
 
     /* 6. Flèche de navigation */
     #contact .nav-arrow {
-        position: absolute !important;
+        position: fixed !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 34px !important;
         height: 34px !important;
         font-size: 1rem !important;
-        z-index: 99 !important;
+        z-index: 999 !important;
         background: rgba(15, 23, 42, 0.95) !important;
         border: 1px solid #ffee00 !important;
         border-radius: 50% !important;
