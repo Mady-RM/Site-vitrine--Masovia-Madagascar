@@ -560,7 +560,7 @@ section{
     width: 34px !important;
     height: 34px !important;
     font-size: 1rem !important;
-    z-index: 9999 !important; 
+    z-index: 999 !important; 
     background: rgba(15, 23, 42, 0.95) !important;
     border: 1px solid #ffee00 !important;
     border-radius: 50% !important;
@@ -586,7 +586,7 @@ section{
         right: 15px !important;
         left: auto !important;
         margin: 0 !important;
-        z-index: 20 !important;
+        z-index: 0 !important;
         font-size: 0.7rem !important;
     }
 }
@@ -1323,3 +1323,20 @@ section{
         display: block;
     }
 }
+
+/* Par défaut sur PC : On cache les logos dans le menu */
+.main-nav .menu-icon {
+    display: none !important;
+}
+
+/* Sur mobile (< 768px) : On affiche les logos */
+@media (max-width: 767.98px) {
+    .main-nav .menu-icon {
+        display: inline-block !important;
+        width: 20px;          /* Taille du logo sur mobile */
+        height: 20px;
+        margin-right: 8px;    /* Espace entre le logo et le texte */
+        vertical-align: middle;
+    }
+}
+

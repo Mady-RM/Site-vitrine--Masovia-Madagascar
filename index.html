@@ -40,21 +40,37 @@
     <!-- Bouton de fermeture sur mobile -->
     <button id="menu-close" class="d-md-none border-0 bg-transparent text-white fs-3 position-absolute top-0 end-0 m-3">&times;</button>
     
-    <a href="#apropos" class="nav-link-custom fw-bold text-decoration-none">À propos</a>
+    <a href="#apropos" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/A propos.png" alt="Logo À propos" class="menu-icon"> À propos
+    </a>
     <span class="text-secondary d-none d-md-inline">|</span> 
-    <a href="#services" class="nav-link-custom fw-bold text-decoration-none">Service</a>
+    <a href="#services" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/Service.png" alt="Logo Service" class="menu-icon"> Service
+    </a>
     <span class="text-secondary d-none d-md-inline">|</span> 
-    <a href="#procedure" class="nav-link-custom fw-bold text-decoration-none">Procédure</a>
+    <a href="#procedure" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/procedure.png" alt="Logo Procédure" class="menu-icon"> Procédure
+    </a>
     <span class="text-secondary d-none d-md-inline">|</span> 
-    <a href="#tarif" class="nav-link-custom fw-bold text-decoration-none">Tarif</a>
+    <a href="#tarif" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/Tarif.png" alt="Logo Tarif" class="menu-icon"> Tarif
+    </a>
     <span class="text-secondary d-none d-md-inline">|</span> 
-    <a href="#realisation" class="nav-link-custom fw-bold text-decoration-none">Réalisations</a>
+    <a href="#realisation" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/realisation.png" alt="Logo Réalisations" class="menu-icon"> Réalisations
+    </a>
     <span class="text-secondary d-none d-md-inline">|</span> 
-    <a href="#equipe" class="nav-link-custom fw-bold text-decoration-none">Équipe</a>
+    <a href="#equipe" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/Equipe.png" alt="Logo Équipe" class="menu-icon"> Équipe
+    </a>
     <span class="text-secondary d-none d-md-inline">|</span>
-    <a href="#technologie" class="nav-link-custom fw-bold text-decoration-none">Technologie</a>
+    <a href="#technologie" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/la-technologie.png" alt="Logo Technologie" class="menu-icon"> Technologie
+    </a>
     <span class="text-secondary d-none d-md-inline">|</span>
-    <a href="#Contact" class="nav-link-custom fw-bold text-decoration-none">Contact</a>
+    <a href="#Contact" class="nav-link-custom fw-bold text-decoration-none">
+        <img src="./Image/contact-us.png" alt="Logo Contact" class="menu-icon"> Contact
+    </a>
 </nav>
     </div>
 </header>
@@ -160,7 +176,7 @@
 </section>
 
    <!-- section apropos -->
-<section id="apropos" class="py-5 d-none text-white position-relative">
+<section id="apropos" class="py-5 d-none text-white position-relative min-vh-100">
     <div class="container py-4">
         <!-- En-tête de section -->
         <div class="text-center mb-5">
@@ -227,6 +243,7 @@
         </p>
     </footer>
 </section>
+
 <!-- section equipe -->
 <section id="equipe" class="py-5 d-none position-relative min-vh-100 d-flex align-items-center">
     <div class="container py-4">
@@ -328,7 +345,7 @@
                 <div class="glass-box p-3 h-100 border-warning">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center gap-3">
-                            <img src="./Photo/Alberto.jpg" alt="Membre 4" class="rounded-circle object-fit-cover border border-secondary" width="60" height="60">
+                            <img src="./Photo/Julio.jpg" alt="Membre 4" class="rounded-circle object-fit-cover border border-secondary" width="60" height="60">
                             <div>
                                 <h4 class="h6 text-white fw-bold mb-0">TIANDRAZANA Maniniaina Julio</h4>
                                 <span class="text-white-50 small">Développeur mobile</span>
@@ -348,7 +365,7 @@
                 <div class="glass-box p-3 h-100 border-warning">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center gap-3">
-                            <img src="./Image/Mady.jpg" alt="Membre 5" class="rounded-circle object-fit-cover border border-secondary" width="60" height="60">
+                            <img src="./Photo/Alberto.jpg" alt="Membre 5" class="rounded-circle object-fit-cover border border-secondary" width="60" height="60">
                             <div>
                                 <h4 class="h6 text-white fw-bold mb-0">ANDRIAMANAMBINA Tsarafomba Alberto</h4>
                                 <span class="text-white-50 small">Développeur web</span>
@@ -954,9 +971,9 @@
 </section>
 
 <!-- Section Réalisations -->
-<section id="realisation" class="py-5 d-none position-relative min-vh-100 d-flex align-items-center">
+<section id="realisation" class="py-5 position-relative min-vh-100 d-flex align-items-center">
   <div class="container py-4">
-    
+      
     <!-- En-tête de la section -->
     <div class="text-center mb-5">
       <h2 class="fw-bold text-white display-5 fst-italic">
@@ -965,22 +982,20 @@
       </h2>
     </div>
 
-    <!-- Alignement en 3 colonnes horizontales -->
+    <!-- Grille Bootstrap -->
     <div class="row g-4 justify-content-center">
 
+      <!-- LIGNE 1 -->
       <!-- Carte 1 -->
       <div class="col-12 col-md-4">
         <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
           <div>
-            <!-- Photo en haut -->
             <img src="./Photo/Site vitrine.png" alt="Projet 1" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
-            <!-- Texte Lorem Ipsum -->
             <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Site e-commerce de matériel d'arts martiaux</h3>
             <p class="text-light fs-6">
-            Conception et développement d'un site Wev e-commerce dédié à la vente de matériels et équipements pour les arts martiaux
+              Conception et développement d'un site Web e-commerce dédié à la vente de matériels et équipements pour les arts martiaux
             </p>
           </div>
-          <!-- Bouton en savoir plus en bas -->
           <div class="mt-3 text-center">
             <a href="realisation.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
           </div>
@@ -991,15 +1006,12 @@
       <div class="col-12 col-md-4">
         <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
           <div>
-            <!-- Photo en haut -->
-            <img src="./Photo/Site vitrine.png" alt="Projet 2" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
-            <!-- Texte Lorem Ipsum -->
-            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Nom du Projet 02</h3>
+            <img src="./Image/Candra.jpg" alt="Projet 2" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Plateforme Web - KANDRA</h3>
             <p class="text-light fs-6">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
+              Plateforme web moderne dédiée à la recherche d’emploi et au recrutement à Mahajanga, Madagascar. 
             </p>
           </div>
-          <!-- Bouton en savoir plus en bas -->
           <div class="mt-3 text-center">
             <a href="realisation1.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
           </div>
@@ -1010,23 +1022,117 @@
       <div class="col-12 col-md-4">
         <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
           <div>
-            <!-- Photo en haut -->
-            <img src="./Photo/Site vitrine.png" alt="Projet 3" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
-            <!-- Texte Lorem Ipsum -->
-            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Nom du Projet 03</h3>
+            <img src="./Image/Egliziko.jpg" alt="Projet 3" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Site Web - Egliziko</h3>
             <p class="text-light fs-6">
-              Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum.
+              Egiliziko est une plateforme web de gestion d’église conçue pour centraliser et simplifier la gestion des membres, des associations, des finances, des paiements, des activités et des événements.
             </p>
           </div>
-          <!-- Bouton en savoir plus en bas -->
           <div class="mt-3 text-center">
             <a href="realisation2.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
           </div>
         </div>
       </div>
 
-    </div>
-  </div>
+      <!-- Carte 4  -->
+      <div class="col-12 col-md-4">
+        <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
+          <div>
+            <img src="./Image/Tickme.jpg" alt="Projet 4" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Application Web - TIckme</h3>
+            <p class="text-light fs-6">
+                Une application web de gestion et de réservation de billets événementiels. Elle permet aux utilisateurs de découvrir des événements, de rechercher des activités qui les intéressent et d’accéder facilement au processus de réservation.
+            </p>
+          </div>
+          <div class="mt-3 text-center">
+            <a href="realisation4.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte 5  -->
+      <div class="col-12 col-md-4">
+        <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
+          <div>
+            <img src="./Image/MadaHelp.jpg" alt="Projet 5" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Plateforme numerique - MadaHelp</h3>
+            <p class="text-light fs-6">
+              MadaHelp est une plateforme numérique de mise en relation entre les clients qui recherchent des services et les prestataires professionnels qui souhaitent proposer leurs compétences à Madagascar.
+            </p>
+          </div>
+          <div class="mt-3 text-center">
+            <a href="realisation5.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- card 6 -->
+      <div class="col-12 col-md-4">
+        <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
+          <div>
+            <img src="./Image/Mycar.jpg" alt="Projet 5" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">MyCar – Plateforme de Vérification des Véhicules</h3>
+            <p class="text-light fs-6">
+             MyCar est une plateforme web dédiée à la vérification et à la consultation des informations sur les véhicules à Madagascar.
+            </p>
+          </div>
+          <div class="mt-3 text-center">
+            <a href="realisation6.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- card 7 -->
+      <div class="col-12 col-md-4">
+        <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
+          <div>
+            <img src="./Image/Location vehicule.jpg" alt="Projet 5" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Apk mobile - HOFAO </h3>
+            <p class="text-light fs-6">
+             HOFAO est une plateforme numérique de mise en relation entre les clients qui recherchent un véhicule à louer et les agences de location à Mahajanga, Madagascar.
+            </p>
+          </div>
+          <div class="mt-3 text-center">
+            <a href="realisation7.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- card 8 -->
+      <div class="col-12 col-md-4">
+        <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
+          <div>
+            <img src="./Image/optima.jpg" alt="Projet 5" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Otpima School - Gestion des écoles </h3>
+            <p class="text-light fs-6">
+             HOFAO est une plateforme numérique de mise en relation entre les clients qui recherchent un véhicule à louer et les agences de location à Mahajanga, Madagascar.
+            </p>
+          </div>
+          <div class="mt-3 text-center">
+            <a href="realisation8.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- card 9 -->
+      <div class="col-12 col-md-4">
+        <div class="glass-box p-3 h-100 d-flex flex-column justify-content-between border-warning">
+          <div>
+            <img src="./Image/Kaziba.jpg" alt="Projet 5" class="img-fluid rounded border border-warning border-opacity-50 w-100 object-fit-cover mb-3" style="height: 180px;">
+            <h3 class="fw-bold text-jaune fs-4 mb-2 text-center">Kaziba - Apk mobile </h3>
+            <p class="text-light fs-6">
+            KAZIBA est une application mobile immobilière innovante qui facilite la recherche, la découverte et la gestion de biens immobiliers à Madagascar.
+            </p>
+          </div>
+          <div class="mt-3 text-center">
+            <a href="realisation9.html" class="btn btn-warning fw-bold w-100">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+    </div> 
+
+  </div> 
 
   <!-- Flèches de navigation -->
   <a href="#tarif" class="nav-arrow nav-arrow-left text-decoration-none" title="Tarifs">&#10094;</a>
@@ -1036,7 +1142,7 @@
     <p class="mb-0">
         &copy; <span class="year"></span> <strong>It is Our Passion</strong>
     </p>
-</footer>
+  </footer>
 </section>
 </main>
 

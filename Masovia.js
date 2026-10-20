@@ -144,3 +144,25 @@ function choisirOffre(typeOffre) {
         textareaMessage.value = offresDetails[typeOffre].details;
     }
 }
+
+// Désactiver le clic droit et les raccourcis d'inspection
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) {
+        e.preventDefault();
+        return false;
+    }
+    
+    if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+        e.preventDefault();
+        return false;
+    }
+});
