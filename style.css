@@ -155,7 +155,7 @@ html{
 }
 /* Style des flèches de navigation latérales */
 .nav-arrow {
-    position: absolute;
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
     color: #ffee00;
